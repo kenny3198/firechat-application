@@ -61,9 +61,7 @@ export default {
       state.username = ""
     }
     const sendMessage = () => {
-       const messagesRef = db.database().ref("messages");
-	//    error shown
-	//    Uncaught TypeError: _db__WEBPACK_IMPORTED_MODULE_2__.default.database is not a function .
+       const messagesRef = db.database().ref("messages"); 
 
        if (inputMessage.value === "" || inputMessage.value === null) {
         return;
@@ -79,9 +77,6 @@ export default {
     }
     onMounted(() => {
       const messagesRef = db.database().ref("messages");
-	//   error shown
-	//   Uncaught TypeError: _db__WEBPACK_IMPORTED_MODULE_2__.default.database is not a function
-
          messagesRef.on('value', snapshot => {
         const data = snapshot.val()
         let messages = [];
@@ -92,9 +87,10 @@ export default {
               content: data[key].content
              });
         });
-        state.messages = messages;
+			state.messages = messages;
 
       })
+	
 
     })
     return {
